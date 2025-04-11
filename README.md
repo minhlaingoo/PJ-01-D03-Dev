@@ -51,7 +51,7 @@ root@11cd06bb6ccb:/var/www/html/app# npm run build
 exit
 
 
-### Database ###
+# Database 
 #Test docker database
 docker exec -it mariadb.test mariadb -u root -p
 
@@ -143,5 +143,5 @@ root@242dda23e064:/var/www/html/app# php artisan storage:lin
 
    INFO  The [public/storage] link has been connected to [storage/app/public].  
 
-root@242dda23e064:/var/www/html/app# 
-------------------------------------------------------------------------------------------------------------
+
+

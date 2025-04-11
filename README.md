@@ -1,6 +1,6 @@
 # PJ01-D02-Dev
 sudo apt-get update
-#docker image build
+# docker image build
 docker-compose build image.test
 
 cd nginx/
@@ -9,13 +9,13 @@ cat demo.app.conf
  root /var/www/html/phpinfo;
 fastcgi_pass 172.16.100.101:9000;
 
-#git clone and replace the directory
+# git clone and replace the directory
 cd code/
 sudo rm -r app
 git clone https://github.com/minhlaingoo/PJ-01-D01-Devlopment-Version-.git
 mv PJ-01-D01-Devlopment-Version-/ app
 
-#copy and edit .env
+# copy and edit .env
 cp .env.example .env
 edit the .env
 
@@ -25,21 +25,22 @@ DB_PORT=3306
 DB_DATABASE=pancake
 DB_USERNAME=root
 DB_PASSWORD=password
-#edit nginx phpinfo
+
+# edit nginx phpinfo
 iprogen@devsvr06:~/PJ-01-Docker/nginx$ nano app_conf/
 iprogen@devsvr06:~/PJ-01-Docker/nginx$ cd app_conf/
 iprogen@devsvr06:~/PJ-01-Docker/nginx/app_conf$ nano demo.app.conf 
 
         root /var/www/html/app/public;
-#       root /var/www/html/phpinfo;
+        #root /var/www/html/phpinfo;
 
-#composer install
+# composer install
 iprogen@devsvr06://home/iprogen/PJ-01-Docker/code/app$ docker exec -it app.test bash
 root@9e2d61b679aa:/var/www/html# cd app
 root@9e2d61b679aa:/var/www/html/app# ls -al
 composer install
 
-#npm install
+# npm install
 iprogen@devsvr06://home/iprogen/PJ-01-Docker/code/app$ docker exec -it php-node.test bash
 root@11cd06bb6ccb:/var/www/html# ls -al
 root@11cd06bb6ccb:/var/www/html/app# npm install
@@ -48,13 +49,6 @@ root@11cd06bb6ccb:/var/www/html/app# npm run build
 > build
 > vite build
 exit
-
-
-
-
-
-
-
 
 
 ### Database ###
@@ -101,7 +95,7 @@ SHOW DATABASES;
 CREATE DATABASE pancake;
 
 
-#artisan key:generate
+# artisan key:generate
 iprogen@devsvr06://home/iprogen/PJ-01-Docker/code/app$ docker exec -it app.test bash
 root@9e2d61b679aa:/var/www/html# cd app/ 
 root@9e2d61b679aa:/var/www/html/app# php artisan key:generate
@@ -110,7 +104,7 @@ root@9e2d61b679aa:/var/www/html/app# php artisan key:generate
 
 root@9e2d61b679aa:/var/www/html/app# php artisan migrate 
 
-#artisan migrate
+# artisan migrate
 root@242dda23e064:/var/www/html/app# php artisan migrate  
 
    INFO  Preparing database.  
@@ -131,7 +125,7 @@ root@242dda23e064:/var/www/html/app# php artisan migrate
   2025_03_26_090247_create_devices_table ..................................................................... 40.85ms DONE
 
 root@242dda23e064:/var/www/html/app# 
-#artisan seed
+# artisan seed
 root@242dda23e064:/var/www/html/app# php artisan db:seed
 
    INFO  Seeding database.  
@@ -142,6 +136,7 @@ root@242dda23e064:/var/www/html/app# php artisan db:seed
 Email: pancake@admin.com
 Password: password
 
+# artison link
 iprogen@devsvr06:~/PJ-01-Docker$ docker exec -it app.test bash
 root@242dda23e064:/var/www/html# cd app/
 root@242dda23e064:/var/www/html/app# php artisan storage:lin

@@ -3,6 +3,7 @@ sudo apt-get update
 # docker image build
 docker-compose build image.test
 
+# modify the demo.app.conf  (replace test with phpinfo)
 cd nginx/
 cd app_conf/
 cat demo.app.conf 

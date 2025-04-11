@@ -6,7 +6,7 @@ docker-compose build image.test
 # modify the demo.app.conf  (replace test with phpinfo)
 cd nginx/
 cd app_conf/
-cat demo.app.conf 
+nano demo.app.conf 
  root /var/www/html/phpinfo;
 fastcgi_pass 172.16.100.101:9000;
 

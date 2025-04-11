@@ -140,9 +140,9 @@ Password: password
 # artisan link
 iprogen@devsvr06:~/PJ-01-Docker$ docker exec -it app.test bash
 root@242dda23e064:/var/www/html# cd app/
-root@242dda23e064:/var/www/html/app# php artisan storage:lin
+root@242dda23e064:/var/www/html/app# php artisan storage:link
 
    INFO  The [public/storage] link has been connected to [storage/app/public].  
 
 
-
+# npm install (as shown above)

@@ -1,0 +1,9 @@
+@import '../../vendor/mijnui/mijnui/dist/mijnui.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: 212 77% 60%;
+}

@@ -1,4 +1,4 @@
-<mijnui:table>
+<mijnui:table wire:poll.1s="checkForUpdate">
 
     <mijnui:table.columns>
         <mijnui:table.column>Log</mijnui:table.column>
@@ -10,14 +10,17 @@
     </mijnui:table.columns>
 
     <mijnui:table.rows>
-        <mijnui:table.row>
-            <mijnui:table.cell>Heat has been detected up to 50*C </mijnui:table.cell>
-            <mijnui:table.cell>ChemLab</mijnui:table.cell>
-            <mijnui:table.cell>Heat sensor</mijnui:table.cell>
-            <mijnui:table.cell>{{now()}}</mijnui:table.cell>
-            <mijnui:table.cell>
-                <mijnui:button color="primary" size="xs">View</mijnui:button>
-            </mijnui:table.cell>
-        </mijnui:table.row>
+        @foreach ($logs as $log)
+            <mijnui:table.row>
+                <mijnui:table.cell>{{$log->value}}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->sensor->device->name}}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->sensor->name}}</mijnui:table.cell>
+                <mijnui:table.cell>{{ $log->created_at->diffForHumans()}}</mijnui:table.cell>
+                <mijnui:table.cell>
+                    <mijnui:button color="primary" size="xs">View</mijnui:button>
+                </mijnui:table.cell>
+            </mijnui:table.row>
+        @endforeach
+
     </mijnui:table.rows>
 </mijnui:table>

@@ -30,7 +30,7 @@
 
             <mijnui:dropdown>
                 <mijnui:dropdown.trigger>
-                    <mijnui:avatar fallback="A" class="cursor-pointer"></mijnui:avatar>
+                    <mijnui:avatar fallback="{{auth()->user()->name[0]}}" class="cursor-pointer"></mijnui:avatar>
                 </mijnui:dropdown.trigger>
                 <mijnui:dropdown.content align="right">
                     <mijnui:dropdown.body>

@@ -1,13 +1,13 @@
-<mijnui:table :paginate="$logs">
+<mijnui:table :paginate="$logs" class="table-fixed">
 
     <mijnui:table.columns>
-        <mijnui:table.column>Log Name</mijnui:table.column>
-        <mijnui:table.column>Event</mijnui:table.column>
-        <mijnui:table.column>Description</mijnui:table.column>
-        <mijnui:table.column>Status</mijnui:table.column>
-        <mijnui:table.column>Created At</mijnui:table.column>
-        <mijnui:table.column>Created By</mijnui:table.column>
-        <mijnui:table.column>Action</mijnui:table.column>
+        <mijnui:table.column class="w-28">Log Name</mijnui:table.column>
+        <mijnui:table.column class="w-24">Event</mijnui:table.column>
+        <mijnui:table.column class="w-48">Description</mijnui:table.column>
+        <mijnui:table.column class="w-24">Status</mijnui:table.column>
+        <mijnui:table.column class="w-48">Created At</mijnui:table.column>
+        <mijnui:table.column class="w-28">Created By</mijnui:table.column>
+        <mijnui:table.column class="w-24">Action</mijnui:table.column>
 
     </mijnui:table.columns>
 
@@ -31,7 +31,7 @@
                     </mijnui:badge>
                 </mijnui:table.cell>
                 <mijnui:table.cell>
-                    {{ $log->created_at->format('H:i:s d-M-Y') }}
+                    {{ $log->created_at->format('d M Y H:i') }}
                 </mijnui:table.cell>
                 <mijnui:table.cell>
                     {{ $log->createdUser->name ?? 'unknown' }}

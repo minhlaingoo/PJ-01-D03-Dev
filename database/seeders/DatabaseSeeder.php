@@ -22,9 +22,6 @@ class DatabaseSeeder extends Seeder
                 'email' => 'pancake@admin.com',
             ]);
 
-            echo "Default User created: \n";
-            echo "Email: " . $user->email . "\n";
-            echo "Password: " . "passowrd" . "\n";
         }
 
         $settingFactory = new \Database\Factories\SettingFactory();

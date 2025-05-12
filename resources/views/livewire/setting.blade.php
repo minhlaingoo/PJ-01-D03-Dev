@@ -3,14 +3,14 @@
     <mijnui:card.header class="text-2xl font-semibold">App Setting</mijnui:card.header>
     <mijnui:card.content>
         <form wire:submit.prevent="updateAppSetting">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                 {{-- //* span 2  --}}
-                <div class="col-span-3">
+                <div class="md:col-span-3">
                     <mijnui:input label="App Name" type="text" wire:model="appName" />
                 </div>
 
-                <div class="col-span-2">
+                <div class="md:col-span-2">
                     <mijnui:textarea label="App Description" placeholder="Type application's description" wire:model="appDescription" />
                 </div>
 

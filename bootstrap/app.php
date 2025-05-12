@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'can' => HavePermission::class
         ]);
     })
+    ->withEvents([
+        __DIR__. '/../app/Listeners'
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

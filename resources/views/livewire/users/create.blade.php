@@ -23,7 +23,7 @@
                             <mijnui:select.option value="{{ $role->id }}">{{ $role->name }}</mijnui:select.option>
                         @endforeach
                     </mijnui:select>
-                    <div class="col-span-2">
+                    <div class="md:col-span-2">
                         <mijnui:input required wire:model="email" placeholder="user@example.com" label="Email" />
                     </div>
                     <mijnui:input type="password" viewable required wire:model="password" placeholder="********"

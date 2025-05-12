@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.10.1",
         "laravel/ui": "^4.6",
         "livewire/livewire": "^3.6",
-        "mijnui/mijnui": "dev-main"
+        "mijnui/mijnui": "dev-main",
+        "php-mqtt/client": "^2.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

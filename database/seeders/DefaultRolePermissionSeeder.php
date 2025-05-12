@@ -22,16 +22,30 @@ class DefaultRolePermissionSeeder extends Seeder
         $featurePermissionFactory = new FeaturePermissionFactory();
 
         //Features
-        $basic_feature = ['user', 'role'];
-        $log_feature = ['activity-log'];
+        $basic_feature = ['user', 'role', 'device', 'protocol','system-log', 'process-log', 'process'];
+        $log_feature = ['activity-log', 'sensor-log'];
+        $device_feature = ['device-config'];
+        $protocol_feature = ['protocol-config'];
+        $process_feature = [];
+
 
         //Permissions
+        /**
+         * 0 - 'view'
+         * 1 - 'create'
+         * 2 - 'update'
+         * 3 - 'delete'
+         * 4 - 'import'
+         * 5 - 'export'
+         * 6 - 'print'
+         */
+
         $basic_permissions = ['view', 'create', 'update', 'delete', 'import', 'export', 'print'];
         $systemPermissions = ['install', 'uninstall', 'upload'];
-        $vds_permissions = [$basic_permissions[0], $basic_permissions[3], ...$systemPermissions];
-        $log_permissions = [$basic_permissions[0],$basic_permissions[5]];
-
-
+        $optionalPermissions = ['real-time', 'version-approval'];
+        $log_permissions = [$basic_permissions[0], $basic_permissions[5]];
+        $device_pemissions = [$basic_permissions[0], $basic_permissions[1], $basic_permissions[2], $basic_permissions[3], $basic_permissions[5], $optionalPermissions[0]];
+        $protocol_permissions = [$basic_permissions[0], $basic_permissions[1], $basic_permissions[2], $basic_permissions[3], ...$optionalPermissions];
 
         $rolesToCreate = ['Administrator'];
 
@@ -49,5 +63,4 @@ class DefaultRolePermissionSeeder extends Seeder
             }
         }
     }
-
 }

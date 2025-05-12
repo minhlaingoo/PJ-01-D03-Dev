@@ -1,19 +1,26 @@
-<mijnui:table>
+<mijnui:table wire:poll.1s="checkForUpdate" class="table-fixed">
 
     <mijnui:table.columns>
-        <mijnui:table.column>Name</mijnui:table.column>
-        <mijnui:table.column>Sensor Type</mijnui:table.column>
-        <mijnui:table.column>Device Name</mijnui:table.column>
-        <mijnui:table.column>Unit</mijnui:table.column>
-        @if (checkPermission('role', 'update') || checkPermission('role', 'delete'))
-            <mijnui:table.column>Action</mijnui:table.column>
-        @endif
+
+        <mijnui:table.column class="w-4">No.</mijnui:table.column>
+        <mijnui:table.column class="w-48">Log</mijnui:table.column>
+        <mijnui:table.column class="w-24">Device Name</mijnui:table.column>
+        <mijnui:table.column class="w-24">Sensor Name</mijnui:table.column>
+        <mijnui:table.column class="w-24">Logged at</mijnui:table.column>
     </mijnui:table.columns>
 
     <mijnui:table.rows>
-        <mijnui:table.row>
-            <mijnui:table.cell colspan="5" class='text-center py-8'>No Data</mijnui:table.cell>
-        </mijnui:table.row>
+
+        @foreach ($logs as $index => $log)
+            <mijnui:table.row>
+                <mijnui:table.cell>{{ $index + 1 }}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->value}}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->sensor->device->name}}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->sensor->name}}</mijnui:table.cell>
+                <mijnui:table.cell>{{$log->created_at->diffForHumans()}}</mijnui:table.cell>
+            </mijnui:table.row>
+        @endforeach
+
     </mijnui:table.rows>
 
 </mijnui:table>

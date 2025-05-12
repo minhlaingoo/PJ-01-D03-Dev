@@ -8,36 +8,35 @@
         @endif
     </div>
    
-    <div>
-        <mijnui:table :paginate="$users">
-
+    <div class="w-full overflow-x-auto">
+        <mijnui:table class="table-fixed w-full">
             <mijnui:table.columns>
-                <mijnui:table.column>Name</mijnui:table.column>
-                <mijnui:table.column>Role</mijnui:table.column>
-                <mijnui:table.column>Email</mijnui:table.column>
-                <mijnui:table.column>Joined</mijnui:table.column>
-                <mijnui:table.column>Active</mijnui:table.column>
+                <mijnui:table.column class="w-32">Name</mijnui:table.column>
+                <mijnui:table.column class="w-32">Role</mijnui:table.column>
+                <mijnui:table.column class="w-48">Email</mijnui:table.column>
+                <mijnui:table.column class="w-48">Joined</mijnui:table.column>
+                <mijnui:table.column class="w-24">Active</mijnui:table.column>
                 @if (checkPermission('user', 'update') || checkPermission('user', 'delete'))
-                    <mijnui:table.column>Action</mijnui:table.column>
+                    <mijnui:table.column class="w-24">Action</mijnui:table.column>
                 @endif
             </mijnui:table.columns>
 
             <mijnui:table.rows>
                 @foreach ($users as $user)
                     <mijnui:table.row>
-                        <mijnui:table.cell>
+                        <mijnui:table.cell >
                             {{ $user->name }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell>
+                        <mijnui:table.cell >
                             {{ $user->role->name ?? '' }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell>
+                        <mijnui:table.cell >
                             {{ $user->email }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell>
-                            {{ $user->created_at }}
+                        <mijnui:table.cell >
+                            {{ $user->created_at->format('d M Y H:i') }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell>
+                        <mijnui:table.cell >
                             <mijnui:badge size="sm" color="{{ $user->is_active ? 'success' : 'danger' }}"
                                 rounded="lg" outline>{{ $user->is_active ? 'active' : 'inactive' }}</mijnui:badge>
                         </mijnui:table.cell>

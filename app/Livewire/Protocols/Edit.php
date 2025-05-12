@@ -5,11 +5,11 @@ namespace App\Livewire\Protocols;
 use App\Models\Protocol;
 use Livewire\Component;
 
-class Create extends Component
+class Edit extends Component
 {
+    public $protocol;
     public $sample_id;
     public $description;
-
     public $formData = [
         'mAb' => [
             'volume' => 0,
@@ -45,23 +45,28 @@ class Create extends Component
         ],
     ];
 
-
-
-    public function finalizeProtocol()
+    public function mount($sample_id)
     {
+        $this->protocol = Protocol::where('sample_id',$sample_id)->first();
+        $this->sample_id = $this->protocol->sample_id;
+        $this->description = $this->protocol->description;
+        $this->formData = json_decode($this->protocol->value, true);
+    }
 
-        $protocol = Protocol::create([
+    public function updateProtocol()
+    {
+        $this->protocol->update([
             'sample_id' => $this->sample_id,
             'description' => $this->description,
             'value' => json_encode($this->formData),
         ]);
-        session()->flash('message', 'Protocol created successfully.');
-        return to_route('protocols.final-lab', $protocol->sample_id);
 
+        session()->flash('message', 'Protocol updated successfully.');
+        return to_route('protocols.final-lab', $this->protocol->sample_id);
     }
 
     public function render()
     {
-        return view('livewire.protocols.create');
+        return view('livewire.protocols.edit');
     }
 }

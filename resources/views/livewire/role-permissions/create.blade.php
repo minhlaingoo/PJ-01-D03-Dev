@@ -12,48 +12,50 @@
 
     <mijnui:card class="py-8 px-6">
         <form wire:submit.prevent="store">
-        <mijnui:card.content>
-                <mijnui:input placeholder="e.g. Assistant" label="Role Name" wire:model="role" required/>
-                <mijnui:separator/>
+            <mijnui:card.content>
+                <mijnui:input placeholder="e.g. Assistant" label="Role Name" wire:model="role" required />
+                <mijnui:separator />
                 <div class="mt-3">
                     <mijnui:label>Permissions</mijnui:label>
                     <mijnui:error name="selected_permissions" />
-                    <table class="w-full m-3">
-                        @foreach ($fPermissions as $fPermission)
-                            <tr class=" hover:bg-gray-50 transition-colors duration-200">
-                                <!-- Permission Group Name -->
-                                <td class="py-4 pl-4 font-semibold">
-                                    {{ ucwords($fPermission->name) }}
-                                </td>
+                    <div class="w-full overflow-auto">
 
-                                <!-- Permissions List -->
-                                <td class="py-4 pr-4">
-                                    <div class="flex flex-wrap items-center gap-4">
+                        <table class="w-full m-3 table-fixed">
+                            @foreach ($fPermissions as $fPermission)
+                                <tr class=" hover:bg-gray-50 transition-colors duration-200">
+                                    <!-- Permission Group Name -->
+                                    <td class="py-4 font-semibold w-24">
+                                        {{ ucwords($fPermission->name) }}
+                                    </td>
 
-                                        <mijnui:checkbox.group class="flex gap-8 text-sm">
-                                            @foreach ($fPermission->permissions as $permission)
-                                                <div class="flex-shrink-0">
-                                                    <mijnui:checkbox
-                                                        wire:model.live="selected_permissions"
-                                                        id="{{$fPermission->name}}"
-                                                        value="{{ $permission->id }}"
-                                                        label="{{ $permission->name }}"
-                                                    />
-                                                </div>
-                                            @endforeach
-                                        </mijnui:checkbox.group>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
+                                    <!-- Permissions List -->
+                                    <td class="py-4 pr-4">
+                                        <div class="flex flex-wrap items-center gap-4">
+
+                                            <mijnui:checkbox.group class="flex gap-8 text-sm">
+                                                @foreach ($fPermission->permissions as $permission)
+                                                    <div class="flex-shrink-0">
+                                                        <mijnui:checkbox wire:model.live="selected_permissions"
+                                                            id="{{ $fPermission->name }}" value="{{ $permission->id }}"
+                                                            label="{{ $permission->name }}" />
+                                                    </div>
+                                                @endforeach
+                                            </mijnui:checkbox.group>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+
+                    </div>
+
                 </div>
 
-        </mijnui:card.content>
-        <mijnui:card.footer>
-            <mijnui:button wire:loading wire:target="store" disabled>Loading</mijnui:button>
-            <mijnui:button color="primary" wire:loading.remove wire:target="store">Create</mijnui:button>
-        </mijnui:card.footer>
+            </mijnui:card.content>
+            <mijnui:card.footer>
+                <mijnui:button wire:loading wire:target="store" disabled>Loading</mijnui:button>
+                <mijnui:button color="primary" wire:loading.remove wire:target="store">Create</mijnui:button>
+            </mijnui:card.footer>
         </form>
     </mijnui:card>
 </div>

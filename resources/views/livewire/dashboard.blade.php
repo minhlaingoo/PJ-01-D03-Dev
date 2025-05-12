@@ -1,5 +1,5 @@
 <div class="space-y-4">
-    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:grid-cols-4">
         <mijnui:card class="max-w-80">
             <mijnui:card.header>
                 <span
@@ -68,7 +68,7 @@
         </mijnui:card.content>
     </mijnui:card>
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <mijnui:card>
             <mijnui:card.header class="text-lg font-semibold">Chamber Volume List</mijnui:card.header>
             <mijnui:card.content>
@@ -79,7 +79,7 @@
         <mijnui:card>
             <mijnui:card.header>
                 <mijnui:card.title class="text-lg font-semibold">
-                    Daily Protocol Mornitoring
+                    Daily Protocol Monitoring
                 </mijnui:card.title>
             </mijnui:card.header>
             <mijnui:card.content>

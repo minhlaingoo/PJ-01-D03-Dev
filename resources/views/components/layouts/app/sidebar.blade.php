@@ -103,6 +103,7 @@
     <mijnui:sidebar.double.content mijnui-sidebar-child="setting" title="App Setting">
         <mijnui:list class="flex h-full w-full flex-col items-center gap-2 px-4 py-4">
             <mijnui:list.item href="{{route('setting')}}" :active="request()->routeIs('setting')" wire:navigate>App Setting</mijnui:list.item>
+            <mijnui:list.item href="{{route('broker-setting')}}" :active="request()->routeIs('broker-setting')" wire:navigate>Broker Setting</mijnui:list.item>
             <mijnui:list.item href="{{route('activity-logs.index')}}" :active="request()->routeIs('activity-logs.index')" wire:navigate>Activity Logs</mijnui:list.item>
         </mijnui:list>
     </mijnui:sidebar.double.content>

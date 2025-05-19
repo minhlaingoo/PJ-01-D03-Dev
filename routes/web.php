@@ -25,7 +25,10 @@ use App\Livewire\Devices\Detail as DevicesDetail;
 use App\Livewire\Devices\Sensors as DevicesSensors; 
 use App\Livewire\Devices\Setting as DevicesSetting;
 use App\Livewire\Devices\Log as DeviceLog;
-
+use App\Livewire\Phase\InitializationCycleSetup;
+use App\Livewire\Phase\StorageCycleSetup;
+use App\Livewire\Phase\SystemCleaningCycleSetup;
+use App\Livewire\PhasePage;
 use App\Livewire\Sensors\Log as DevicesSensorsLog;
 use App\Livewire\Sensors\Index as SensorsIndex;
 
@@ -33,9 +36,14 @@ use App\Livewire\Setting;
 
 // Authentication Routes
 require __DIR__ . '/auth.php';
-
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+    Route::prefix('phase')->name('phase.')->group(function(){
+        Route::get('initialization-cycle-setup', InitializationCycleSetup::class)->name('initialization-cycle-setup');
+        Route::get('storage-cycle-setup', StorageCycleSetup::class)->name('storage-cycle-setup');
+        Route::get('system-cleaning-setup', SystemCleaningCycleSetup::class)->name('system-cleaning-setup');
+
+    });
     //    Route::get('/home', Dashboard::class)->name('dashboard');
     Route::get('/home', \App\Livewire\Dashboard::class)->name('dashboard');
     Route::get('/profile', \App\Livewire\Profile\Index::class)->name('user-profile');
@@ -75,11 +83,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/create', ProtocolsCreate::class)->name('protocols.create');
         Route::get('/final-lab/{sample_id}', ProtocolsFinalLab::class)->name('protocols.final-lab');  
         Route::get('/{sample_id}/edit', App\Livewire\Protocols\Edit::class)->name('protocols.edit');
+        Route::get('/run', App\Livewire\Protocols\Run::class)->name('protocols.run');
     });
 
     Route::prefix('sensors')->group(function(){
         Route::get('/', SensorsIndex::class)->name('sensors.index');
     });
+
+    
 
 
     Route::get('/mqtt', MqttComponent::class);

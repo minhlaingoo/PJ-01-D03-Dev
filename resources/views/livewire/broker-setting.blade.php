@@ -6,7 +6,7 @@
         <mijnui:card.content>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                <mijnui:input label="Broker URL" type="text" wire:model="broker_url" />
+                <mijnui:input label="Broker URL" type="text" wire:model="broker_url" required/>
                 <mijnui:input label="Port" type="text" wire:model="broker_port" />
                 <mijnui:input label="Protocol Version" type="text" wire:model="broker_protocol_version" />
                 <div class="lg:col-span-3">

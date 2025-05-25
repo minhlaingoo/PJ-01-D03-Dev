@@ -6,12 +6,6 @@
     <canvas id="{{ $id }}" />
 </div>
 
-@once
-    @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    @endpush
-@endonce
-
 @push('scripts')
     <script>
         var chart = new Chart(

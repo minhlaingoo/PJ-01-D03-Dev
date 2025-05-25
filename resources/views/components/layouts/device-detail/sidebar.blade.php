@@ -9,10 +9,10 @@
             Dashboard
         </mijnui:list.item>
 
-        <mijnui:list.item href="{{ route('devices.sensors') }}" active="{{ request()->routeIs('devices.sensors') }}"
+        {{-- <mijnui:list.item href="{{ route('devices.sensors') }}" active="{{ request()->routeIs('devices.sensors') }}"
             wire:navigate>
             Sensors
-        </mijnui:list.item>
+        </mijnui:list.item> --}}
 
         <mijnui:list.item href="{{ route('devices.logs', ['id' => request()->route('id') ]) }}" active="{{ request()->routeIs('devices.logs') }}"
             wire:navigate>

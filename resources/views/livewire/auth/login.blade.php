@@ -5,7 +5,8 @@
             <mijnui:card.title>
                 {{ __('Login to your account') }}
             </mijnui:card.title>
-            <mijnui:card.description>Enter your email and password below to <strong>{{setting('general')->appName}}</strong>
+            <mijnui:card.description>Enter your email and password below to
+                <strong>{{ setting('general')->appName }}</strong>
             </mijnui:card.description>
         </mijnui:card.header>
         @if (session()->has('error'))
@@ -24,13 +25,10 @@
                     <mijnui:input type="password" id="password" label="Password" wire:model="password" />
                 </div>
 
-                <div class="flex items-center justify-between">
-                    <mijnui:checkbox class="text-xs" label="Remember Me" wire:model="remember"></mijnui:checkbox>
-                    <p class="text-info font-medium text-xs">Forget Password</p>
-                </div>
+
 
                 <div class="flex items-center">
-                    <mijnui:toggle wire:model.live="agree" />
+                    <mijnui:checkbox wire:model.live="agree" />
                     <span class="text-xs text-gray-500 ml-2 flex-1">By checking this, you are to agree
                         <mijnui:modal>
                             <mijnui:modal.content class="max-w-sm">
@@ -55,7 +53,10 @@
                     </span>
                 </div>
 
-                <mijnui:button :disabled="!$agree" type="submit" color="primary" class="w-full">Login</mijnui:button>
+                <mijnui:button :disabled="!$agree" type="submit" color="primary" class="w-full">Login
+                </mijnui:button>
+                <p class="text-info font-medium text-xs ml-auto w-fit">Forget Password</p>
+
             </form>
         </mijnui:card.content>
     </mijnui:card>

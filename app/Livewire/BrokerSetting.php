@@ -86,7 +86,7 @@ class BrokerSetting extends Component
                             $fail('The certificate file appears to be empty.');
                             return;
                         }
-                        
+
                         // Check if file content starts with certificate markers
                         $content = $value->get();
                         if (!str_contains($content, '-----BEGIN CERTIFICATE-----')) {
@@ -114,12 +114,12 @@ class BrokerSetting extends Component
                     $path = $this->client_cert->storeAs('certs', 'client.crt');
                     Log::info('Stored client certificate', ['path' => $path]);
                 }
-                
+
                 if ($this->client_key) {
                     $path = $this->client_key->storeAs('certs', 'client.key');
                     Log::info('Stored client key', ['path' => $path]);
                 }
-                
+
                 if ($this->ca_cert) {
                     $path = $this->ca_cert->storeAs('certs', 'ca.crt');
                     Log::info('Stored CA certificate', ['path' => $path]);

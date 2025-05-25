@@ -64,7 +64,8 @@ class Login extends Component
             ])
             ->status('success')
             ->save();
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        // $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('dashboard'));
     }
 
 

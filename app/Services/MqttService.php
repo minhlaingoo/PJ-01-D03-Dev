@@ -136,7 +136,7 @@ class MqttService
 
                 $this->mqttClient->subscribe($topic_name, function ($topic, $message, $retained) {
                     MqttMessageReceived::dispatch($topic, $message);
-                    Log::info("Message received", compact('topic', 'message', 'retained'));
+                    // Log::info("Message received", compact('topic', 'message', 'retained'));
                     printf("Topic: %s, Message: %s, Retained: %s\n", $topic, $message, $retained ? 'true' : 'false');
                 }, $qos);
             }
@@ -152,7 +152,7 @@ class MqttService
                         foreach ($topics as $topic) {
                             $this->mqttClient->subscribe($topic[0], function ($topic, $message, $retained) {
                                 MqttMessageReceived::dispatch($topic, $message);
-                                Log::info("Message received after reconnection", compact('topic', 'message', 'retained'));
+                                Log::info(" after reconnection", compact('topic', 'message', 'retained'));
                             }, $topic[1]);
                         }
                     }
@@ -160,7 +160,7 @@ class MqttService
                     $this->mqttClient->loop(true);
                     usleep(100000); // Sleep for 100ms
                 } catch (Exception $e) {
-                    Log::error('Error in subscription loop: ' . $e->getMessage());
+                    // Log::error('Error in subscription loop: ' . $e->getMessage());
                     $this->isConnected = false;
                 }
             }

@@ -4,7 +4,9 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold">Devices Table</h2>
         @if (checkPermission('user', 'create'))
-            <mijnui:button color="primary" href="{{ route('devices.create') }}" wire:navigate>Create</mijnui:button>
+            <a href="{{ route('devices.create') }}" wire:navigate>
+                <mijnui:button color="primary">Create</mijnui:button>
+            </a>
         @endif
     </div>
 
@@ -25,15 +27,16 @@
             <mijnui:table.rows>
                 @foreach ($devices as $device)
                     <mijnui:table.row>
-                        <mijnui:table.cell >{{ $device->name }}</mijnui:table.cell>
-                        <mijnui:table.cell >{{ $device->model }}</mijnui:table.cell>
+                        <mijnui:table.cell>{{ $device->name }}</mijnui:table.cell>
+                        <mijnui:table.cell>{{ $device->model }}</mijnui:table.cell>
                         <mijnui:table.cell class="text-center">{{ $device->topic ?? '-' }}</mijnui:table.cell>
-                        <mijnui:table.cell >
-                            <mijnui:badge color="{{ $device->is_active ? 'success' : 'danger' }}" size="xs">{{ $device->is_active ? 'Running' : 'Offline' }}
+                        <mijnui:table.cell>
+                            <mijnui:badge color="{{ $device->is_active ? 'success' : 'danger' }}" size="xs">
+                                {{ $device->is_active ? 'Running' : 'Offline' }}
                             </mijnui:badge>
                         </mijnui:table.cell>
-                        <mijnui:table.cell >{{ now()->subDay() }}</mijnui:table.cell>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>{{ now()->subDay() }}</mijnui:table.cell>
+                        <mijnui:table.cell>
                             <a href="{{ route('devices.detail', ['id' => $device->id]) }}" wire:nagivate>
                                 <mijnui:button size="sm" color="primary">View Detail</mijnui:button>
                             </a>
@@ -113,7 +116,7 @@
                         </div>
                     </div>
                 </div> --}}
-            {{-- @empty
+        {{-- @empty
                 <p>No Device is here</p>
             @endforelse
         </div> --}}

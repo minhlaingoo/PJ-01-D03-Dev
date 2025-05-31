@@ -17,6 +17,9 @@ class Detail extends Component
     
     public function render()
     {
-        return view('livewire.devices.detail')->layout('components.layouts.device-detail.index');
+        return view('livewire.devices.detail',
+        [
+            'sensors' => $this->device->sensors
+        ])->layout('components.layouts.device-detail.index');
     }
 }

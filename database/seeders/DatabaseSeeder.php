@@ -21,13 +21,38 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin PanCake',
                 'email' => 'pancake@admin.com',
             ]);
-
         }
 
         $settingFactory = new \Database\Factories\SettingFactory();
         $settingFactory->createSettingIfNotExist('general', [
             'appName' => 'PanCake',
             'appDescription' => 'A simple and elegant pancake management system.',
+        ]);
+
+        $settingFactory->createSettingIfNotExist('broker', [
+            [
+                'url' => 'mqtt://broker.hivemq.com',
+                'port' => 1883,
+                'protocol_version' => 5,
+                'client_id' => 'client_' . uniqid(),
+                'keep_alive_interval' => 60,
+                'clean_session' => true,
+                'auth_type' => 'none', // or 'basic' / 'tls'
+                'username' => null,
+                'password' => null,
+                'can_publish' => true,
+                'enable_log' => false,
+                'subscribe_topic' => '#',
+                'subscribe_qos' => 0,
+                'subscribe_retain' => false,
+
+                // TLS options
+                'tls_enabled' => false,
+                'tls_verify_peer' => true,
+                'tls_verify_peer_name' => true,
+                'tls_self_signed_allowed' => false,
+            ]
+
         ]);
     }
 }

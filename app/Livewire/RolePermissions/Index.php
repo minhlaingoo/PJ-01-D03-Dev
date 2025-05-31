@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class Index extends Component
 {
+
+    public $perPage = 10;
     public function delete($id)
     {
         if (!checkPermission('role', 'delete')) return abort(403);

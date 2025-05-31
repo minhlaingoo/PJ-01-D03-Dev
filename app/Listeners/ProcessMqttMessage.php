@@ -48,7 +48,6 @@ class ProcessMqttMessage
             } else {
                 Log::warning("The sensor with id: {$sensor->id} is not found");
             }
-            Log::info("Received MQTT message on topic '{$topic}': {$message}");
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }

@@ -9,5 +9,4 @@
     </x-layouts.app.sidebar>
 </x-layouts.app.header>
 @mijnuiScripts
-
-{{-- @livewireScripts --}}
+@livewireScripts

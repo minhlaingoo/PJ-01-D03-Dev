@@ -1,5 +1,5 @@
-<mijnui:table wire:poll.1s="checkForUpdate">
-
+<mijnui:table>
+    <div wire:poll.visible.1s="checkForUpdate"></div>
     <mijnui:table.columns>
         <mijnui:table.column>Log</mijnui:table.column>
         <mijnui:table.column>Device Name</mijnui:table.column>
@@ -12,10 +12,17 @@
     <mijnui:table.rows>
         @foreach ($logs as $log)
             <mijnui:table.row>
-                <mijnui:table.cell>{{$log->value}}</mijnui:table.cell>
-                <mijnui:table.cell>{{$log->sensor->device->name}}</mijnui:table.cell>
-                <mijnui:table.cell>{{$log->sensor->name}}</mijnui:table.cell>
-                <mijnui:table.cell>{{ $log->created_at->diffForHumans()}}</mijnui:table.cell>
+                <mijnui:table.cell>{{ $log->value }}</mijnui:table.cell>
+                <mijnui:table.cell>{{ $log->sensor->device->name }}</mijnui:table.cell>
+                <mijnui:table.cell>{{ $log->sensor->name }}</mijnui:table.cell>
+                <mijnui:table.cell>
+                    {{-- <p x-data="{ time: '{{ $log->created_at->toIso8601String() }}', display: '' }" x-init="const t = dayjs.utc(time);
+                    display = t.fromNow();
+                    setInterval(() => {
+                        display = t.fromNow();
+                    }, 1000);" x-text="display"></p> --}}
+                    {{$log->created_at->diffForHumans()}}
+                </mijnui:table.cell>
                 <mijnui:table.cell>
                     <mijnui:button color="primary" size="xs">View</mijnui:button>
                 </mijnui:table.cell>

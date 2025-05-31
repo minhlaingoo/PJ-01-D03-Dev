@@ -57,7 +57,43 @@
         </mijnui:card>
     </div>
 
-    <div class="col-span-3">
-        <livewire:devices.log id="{{ $device->id }}" />
+    <hr>
+    <h3 class="text-xl font-semibold">Sensor List</h3>
+    <div>
+        <mijnui:table>
+
+            <mijnui:table.columns>
+
+                <mijnui:table.column>ID.</mijnui:table.column>
+                <mijnui:table.column>Name</mijnui:table.column>
+                <mijnui:table.column>Sensor Type</mijnui:table.column>
+                <mijnui:table.column>Sensor Unit</mijnui:table.column>
+                <mijnui:table.column>Action</mijnui:table.column>
+            </mijnui:table.columns>
+
+            <mijnui:table.rows>
+
+                @foreach ($sensors as $index => $sensor)
+                    <mijnui:table.row>
+                        <mijnui:table.cell>{{ $sensor->id }}</mijnui:table.cell>
+                        <mijnui:table.cell>{{ $sensor->name }}</mijnui:table.cell>
+                        <mijnui:table.cell>{{ $sensor->type }}</mijnui:table.cell>
+                        <mijnui:table.cell>{{ $sensor->unit }}</mijnui:table.cell>
+                        <mijnui:table.cell>
+                            <a href="{{route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id])}}">
+                                <mijnui:button color="primary">Edit</mijnui:button>
+                            </a>
+                            <mijnui:button color="danger">Delete</mijnui:button>
+                        </mijnui:table.cell>
+                    </mijnui:table.row>
+                @endforeach
+
+            </mijnui:table.rows>
+
+        </mijnui:table>
     </div>
+
+    {{-- <div class="col-span-3">
+        <livewire:devices.log id="{{ $device->id }}" />
+    </div> --}}
 </div>

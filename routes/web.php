@@ -28,8 +28,7 @@ use App\Livewire\Devices\Log as DeviceLog;
 use App\Livewire\Phase\InitializationCycleSetup;
 use App\Livewire\Phase\StorageCycleSetup;
 use App\Livewire\Phase\SystemCleaningCycleSetup;
-use App\Livewire\PhasePage;
-use App\Livewire\Sensors\Log as DevicesSensorsLog;
+use App\Livewire\Sensors\Edit as SensorsEdit;
 use App\Livewire\Sensors\Index as SensorsIndex;
 
 use App\Livewire\Setting;
@@ -73,7 +72,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/', DevicesIndex::class)->name('devices.index');
         Route::get('/create', DevicesCreate::class)->name('devices.create');
         Route::get('/{id}/detail', DevicesDetail::class)->name('devices.detail');
-        Route::get('/sensors', DevicesSensors::class)->name('devices.sensors');
+        Route::get('/{id}/sensors', DevicesSensors::class)->name('devices.sensors');
+        Route::get('/{id}/sensors/{sensor}/edit', SensorsEdit::class)->name('sensors.edit');
         Route::get('/{id}/logs', DeviceLog::class)->name('devices.logs');
         Route::get('/{id}/setting', DevicesSetting::class)->name('devices.setting');
     });
@@ -88,6 +88,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('sensors')->group(function(){
         Route::get('/', SensorsIndex::class)->name('sensors.index');
+        // Route::get('/{id}/edit', SensorsEdit::class)->name('sensors.edit');
     });
 
     

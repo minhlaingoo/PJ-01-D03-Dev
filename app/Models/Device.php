@@ -15,4 +15,9 @@ class Device extends Model
         'is_active',
         'topic'
     ];
+
+    public function sensors()
+    {
+        return $this->hasMany(Sensor::class);
+    }
 }

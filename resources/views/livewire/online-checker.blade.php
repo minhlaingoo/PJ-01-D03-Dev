@@ -1,1 +1,1 @@
-<div wire:poll.660s="checkOnline"></div>
+<div wire:poll.visible="checkOnline"></div>

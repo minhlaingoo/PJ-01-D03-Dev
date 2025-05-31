@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use PhpMqtt\Client\MqttClient;
 
 class BrokerSetting extends Component
 {
@@ -50,28 +51,36 @@ class BrokerSetting extends Component
     public function mount()
     {
         $broker_setting = Setting::where('category', 'broker')->first();
-        $broker_setting = json_decode($broker_setting->value);
+        $settings = json_decode($broker_setting->value, true); // Convert to associative array
 
-        $this->broker_url = $broker_setting->url;
-        $this->broker_port = $broker_setting->port;
-        $this->broker_protocol_version = $broker_setting->protocol_version;
-        $this->broker_client_id = $broker_setting->client_id;
-        $this->broker_keep_alive_interval = $broker_setting->keep_alive_interval;
-        $this->broker_clean_session = $broker_setting->clean_session ?? false;
+        // Basic settings
+        $this->broker_url = $settings['url'] ?? 'localhost';
+        $this->broker_port = $settings['port'] ?? 1883;
+        $this->broker_protocol_version = $settings['protocol_version'] ?? MqttClient::MQTT_3_1_1;
+        $this->broker_client_id = $settings['client_id'] ?? '';
+        $this->broker_keep_alive_interval = $settings['keep_alive_interval'] ?? 60;
+        $this->broker_clean_session = $settings['clean_session'] ?? true;
 
-        $this->broker_auth_type = $broker_setting->auth_type ?? 'none';
-        $this->broker_username = $broker_setting->username ?? '';
-        $this->broker_password = $broker_setting->password ?? '';
+        // Authentication settings
+        $this->broker_auth_type = $settings['auth_type'] ?? 'none';
+        $this->broker_username = $settings['username'] ?? '';
+        $this->broker_password = $settings['password'] ?? '';
 
-        $this->broker_can_publish = $broker_setting->can_publish ?? false;
+        // Publishing settings
+        $this->broker_can_publish = $settings['can_publish'] ?? false;
+        $this->publish_topic = $settings['publish_topic'] ?? '';
+        $this->publish_message = $settings['publish_message'] ?? '';
 
-        $this->subscribe_topic = $broker_setting->subscribe_topic ?? '';
-        $this->subscribe_qos = $broker_setting->subscribe_qos ?? 0;
-        $this->subscribe_retain = $broker_setting->subscribe_retain ?? false;
+        // Subscription settings
+        $this->subscribe_topic = $settings['subscribe_topic'] ?? '';
+        $this->subscribe_qos = $settings['subscribe_qos'] ?? 0;
+        $this->subscribe_retain = $settings['subscribe_retain'] ?? false;
 
-        $this->enable_log = $broker_setting->enable_log ?? false;
+        // TLS settings
+        $this->tls_enabled = $settings['tls_enabled'] ?? false;
 
-        $this->tls_enabled = $broker_setting->tls_enabled ?? false;
+        // Logging settings
+        $this->enable_log = $settings['enable_log'] ?? false;
     }
 
     public function updated($propertyName)
@@ -112,17 +121,14 @@ class BrokerSetting extends Component
                 // Store certificate files with logging
                 if ($this->client_cert) {
                     $path = $this->client_cert->storeAs('certs', 'client.crt');
-                    Log::info('Stored client certificate', ['path' => $path]);
                 }
 
                 if ($this->client_key) {
                     $path = $this->client_key->storeAs('certs', 'client.key');
-                    Log::info('Stored client key', ['path' => $path]);
                 }
 
                 if ($this->ca_cert) {
                     $path = $this->ca_cert->storeAs('certs', 'ca.crt');
-                    Log::info('Stored CA certificate', ['path' => $path]);
                 }
             }
 

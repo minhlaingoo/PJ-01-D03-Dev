@@ -10,20 +10,22 @@ use Livewire\Component;
 class Log extends Component
 {
     // Listen for the MqttMessageReceived event
-    protected $listeners = ['MqttMessageReceived' => 'handleMqttMessage'];
+    // protected $listeners = ['MqttMessageReceived' => 'handleMqttMessage'];
 
     public function checkForUpdate()
     {
-        if (Cache::get('device_needs_refresh_')) {
-            $this->refreshDevice(); // or just $this->emitSelf('$refresh')
-            Cache::forget('device_needs_refresh_'); // Clear the flag
-        }
+        // dd("herre");
+        // logger("poll did");
+        // if (Cache::get('device_needs_refresh_')) {
+        $this->refreshDevice(); // or just $this->emitSelf('$refresh')
+        // Cache::forget('device_needs_refresh_'); // Clear the flag
+        // }
     }
 
     public function refreshDevice()
     {
         // You can reload data or just:
-        $this->emitSelf('$refresh');
+        $this->dispatch('$refresh');
     }
 
     public function handleMqttMessage($topic, $message)

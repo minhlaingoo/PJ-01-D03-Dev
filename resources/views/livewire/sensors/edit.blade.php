@@ -15,8 +15,11 @@
             </mijnui:card.content>
 
             <mijnui:card.footer>
+                
                 <mijnui:button type="submit" color="primary" size="sm" class="mt-8">Update</mijnui:button>
+
             </mijnui:card.footer>
+            
         </mijnui:card>
 
     </form>

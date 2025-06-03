@@ -152,7 +152,7 @@ class MqttService
                         foreach ($topics as $topic) {
                             $this->mqttClient->subscribe($topic[0], function ($topic, $message, $retained) {
                                 MqttMessageReceived::dispatch($topic, $message);
-                                Log::info(" after reconnection", compact('topic', 'message', 'retained'));
+                                Log::info("after reconnection", compact('topic', 'message', 'retained'));
                             }, $topic[1]);
                         }
                     }

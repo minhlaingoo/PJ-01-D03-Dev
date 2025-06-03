@@ -58,7 +58,15 @@
     </div>
 
     <hr>
-    <h3 class="text-xl font-semibold">Sensor List</h3>
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold">Sensor List</h3>
+        <a href="{{ route('devices.sensors', ['id' => request()->route('id')]) }}">
+
+            <mijnui:button color="primary">
+                + Add Sensor
+            </mijnui:button>
+        </a>
+    </div>
     <div>
         <mijnui:table>
 
@@ -80,7 +88,8 @@
                         <mijnui:table.cell>{{ $sensor->type }}</mijnui:table.cell>
                         <mijnui:table.cell>{{ $sensor->unit }}</mijnui:table.cell>
                         <mijnui:table.cell>
-                            <a href="{{route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id])}}">
+                            <a
+                                href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
                                 <mijnui:button color="primary">Edit</mijnui:button>
                             </a>
                             <mijnui:button color="danger">Delete</mijnui:button>

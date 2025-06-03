@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
             'appDescription' => 'A simple and elegant pancake management system.',
         ]);
 
+        $settingFactory->updateSetting('general', 'term_and_policy', 'This system is the property of PanCake ee company. Unauthorized access or use is strictly prohibited and may result in legal action. Activities are monitored and recorded. By logging in, you acknowledge and agree to comply with company policies and security guidelines.
+        ');
+
         $settingFactory->createSettingIfNotExist('broker', [
             [
                 'url' => 'mqtt://broker.hivemq.com',

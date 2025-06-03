@@ -7,3 +7,6 @@
         </mijnui:main>
     </x-layouts.device-detail.sidebar>
 </x-layouts.device-detail.header>
+
+@mijnuiScripts
+@livewireScripts

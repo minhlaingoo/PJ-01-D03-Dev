@@ -19,4 +19,13 @@ class SettingFactory
             'value' => json_encode($value),
         ]);
     }
+
+    public function updateSetting($category, $key, $value)
+    {
+        $setting = \App\Models\Setting::where('category', $category)->first();
+        $setting_value = json_decode($setting->value, true);
+        $setting_value[$key] = $value;
+        $setting->value = json_encode($setting_value);
+        $setting->save();
+    }
 }

@@ -79,7 +79,6 @@
     </div>
     {{ $slot }}
 
-    @mijnuiScripts
     @stack('scripts')
     <script>
         document.addEventListener('alpine:init', () => {

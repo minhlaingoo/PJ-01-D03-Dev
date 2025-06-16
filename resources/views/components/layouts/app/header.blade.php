@@ -77,6 +77,7 @@
             </div>
         </div>
     </div>
+
     {{ $slot }}
 
     @stack('scripts')
@@ -105,6 +106,7 @@
         });
     </script>
 
+    @mijnuiScripts
 </body>
 
 </html>

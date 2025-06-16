@@ -3,8 +3,10 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold">Role & Permission Table</h2>
         @if (checkPermission('role', 'create'))
-            <mijnui:button color="primary" href="{{ route('role-permissions.create') }}" wire:navigate>Create
-            </mijnui:button>
+            <a href="{{ route('role-permissions.create') }}" wire:navigate>
+                <mijnui:button color="primary">Create
+                </mijnui:button>
+            </a>
         @endif
     </div>
     <x-alert />

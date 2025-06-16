@@ -27,7 +27,7 @@
         <section class="mb-8">
             <div class="inline-flex items-end gap-4 my-4">
                 <h2 class="text-2xl font-semibold ">Protocol List</h2>
-                @if (checkPermission('user', 'create'))
+                @if (checkPermission('protocol', 'create'))
                     <a href="{{ route('protocols.create') }}"
                         class="text-sm border-b-2 border-black border-dotted hover:border-solid leading-0"
                         wire:navigate>Custom Protocol</a>
@@ -44,11 +44,13 @@
                         <p class="text-gray-600 text-xs mb-8">
                             This protocol provides a comprehensive framework for
                             implementing secure and efficient data transfer mechanisms across distributed systems.</p>
-                        <a wire:navigate href="{{ route('protocols.create') }}" class="block">
-                            <mijnui:button color="primary" size="xs"
-                                class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
-                                Set Protocol</mijnui:button>
-                        </a>
+                        @if (checkPermission('protocol', 'create'))
+                            <a wire:navigate href="{{ route('protocols.create') }}" class="block">
+                                <mijnui:button color="primary" size="xs"
+                                    class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
+                                    Set Protocol</mijnui:button>
+                            </a>
+                        @endif
                     </div>
 
                 </div>
@@ -63,11 +65,13 @@
                             A lightweight protocol designed for real-time communication
                             between client and server applications with minimal overhead and latency.
                         </p>
-                        <a wire:navigate href="{{ route('protocols.create') }}" class="block">
-                            <mijnui:button color="primary" size="xs"
-                                class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
-                                Set Protocol</mijnui:button>
-                        </a>
+                        @if (checkPermission('protocol', 'create'))
+                            <a wire:navigate href="{{ route('protocols.create') }}" class="block">
+                                <mijnui:button color="primary" size="xs"
+                                    class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
+                                    Set Protocol</mijnui:button>
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -81,11 +85,13 @@
                             An advanced protocol that enables secure end-to-end encryption
                             for sensitive data transmission across untrusted networks.
                         </p>
-                        <a wire:navigate href="{{ route('protocols.create') }}" class="block">
-                            <mijnui:button color="primary" size="xs"
-                                class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
-                                Set Protocol</mijnui:button>
-                        </a>
+                        @if (checkPermission('protocol', 'create'))
+                            <a wire:navigate href="{{ route('protocols.create') }}" class="block">
+                                <mijnui:button color="primary" size="xs"
+                                    class="text-xs ring-1 hover:ring-2 ring-blue-600 hover:bg-blue-500">
+                                    Set Protocol</mijnui:button>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

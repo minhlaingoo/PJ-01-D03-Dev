@@ -8,6 +8,3 @@
         </mijnui:main>
     </x-layouts.app.sidebar>
 </x-layouts.app.header>
-
-@livewireScripts
-@mijnuiScripts

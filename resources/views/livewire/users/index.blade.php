@@ -4,7 +4,9 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold">User Table</h2>
         @if (checkPermission('user', 'create'))
-            <mijnui:button color="primary" href="{{ route('users.create') }}" wire:navigate>Create</mijnui:button>
+        <a href="{{ route('users.create') }}" wire:navigate>
+            <mijnui:button color="primary">Create</mijnui:button>
+        </a>
         @endif
     </div>
    

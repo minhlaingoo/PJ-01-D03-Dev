@@ -19,10 +19,8 @@
                 <mijnui:table.column class="w-28 text-center">Topic</mijnui:table.column>
                 <mijnui:table.column class="w-24">Status</mijnui:table.column>
                 <mijnui:table.column class="w-48">Last Active</mijnui:table.column>
-                @if (checkPermission('user', 'update') || checkPermission('user', 'delete'))
-                    <mijnui:table.column class="w-32">Action</mijnui:table.column>
-                @endif
-            </mijnui:table.columns>
+                <mijnui:table.column class="w-32">Action</mijnui:table.column>
+                </mijnui:table.columns>
 
             <mijnui:table.rows>
                 @foreach ($devices as $device)
@@ -36,8 +34,9 @@
                             </mijnui:badge>
                         </mijnui:table.cell>
                         <mijnui:table.cell>{{ now()->subDay() }}</mijnui:table.cell>
+
                         <mijnui:table.cell>
-                            <a href="{{ route('devices.detail', ['id' => $device->id]) }}" wire:nagivate>
+                            <a href="{{ route('devices.detail', ['id' => $device->id]) }}" wire:navigate>
                                 <mijnui:button size="sm" color="primary">View Detail</mijnui:button>
                             </a>
                         </mijnui:table.cell>

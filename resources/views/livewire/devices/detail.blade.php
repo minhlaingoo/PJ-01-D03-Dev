@@ -60,12 +60,13 @@
     <hr>
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-xl font-semibold">Sensor List</h3>
-        <a href="{{ route('devices.sensors', ['id' => request()->route('id')]) }}">
-
-            <mijnui:button color="primary">
-                + Add Sensor
-            </mijnui:button>
-        </a>
+        @if (checkPermission('device', 'create'))
+            <a href="{{ route('devices.sensors', ['id' => request()->route('id')]) }}">
+                <mijnui:button color="primary">
+                    + Add Sensor
+                </mijnui:button>
+            </a>
+        @endif
     </div>
     <div>
         <mijnui:table>
@@ -76,7 +77,9 @@
                 <mijnui:table.column>Name</mijnui:table.column>
                 <mijnui:table.column>Sensor Type</mijnui:table.column>
                 <mijnui:table.column>Sensor Unit</mijnui:table.column>
-                <mijnui:table.column>Action</mijnui:table.column>
+                @if (checkPermission('device', 'update'))
+                    <mijnui:table.column>Action</mijnui:table.column>
+                @endif
             </mijnui:table.columns>
 
             <mijnui:table.rows>
@@ -87,13 +90,15 @@
                         <mijnui:table.cell>{{ $sensor->name }}</mijnui:table.cell>
                         <mijnui:table.cell>{{ $sensor->type }}</mijnui:table.cell>
                         <mijnui:table.cell>{{ $sensor->unit }}</mijnui:table.cell>
-                        <mijnui:table.cell>
-                            <a
-                                href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
-                                <mijnui:button color="primary">Edit</mijnui:button>
-                            </a>
-                            <mijnui:button color="danger">Delete</mijnui:button>
-                        </mijnui:table.cell>
+                        @if (checkPermission('device', 'update'))
+                            <mijnui:table.cell>
+                                <a
+                                    href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
+                                    <mijnui:button color="primary">Edit</mijnui:button>
+                                </a>
+                                <mijnui:button color="danger">Delete</mijnui:button>
+                            </mijnui:table.cell>
+                        @endif
                     </mijnui:table.row>
                 @endforeach
 

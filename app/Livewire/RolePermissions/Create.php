@@ -55,13 +55,14 @@ class Create extends Component
 
     public function store(RolePermissionService $rolePermissionService)
     {
-        $this->validate();
         // $rolePermissionService = new ();
+        $this->validate();
         try {
             $rolePermissionService->store($this->role, $this->selected_permissions);
             session()->flash('message', 'Role created successfully.');
             return redirect()->route('role-permissions.index');
         } catch (Exception $e) {
+            dd($e->getMessage());
             session()->flash('error', 'Role create failed.');
         }
     }

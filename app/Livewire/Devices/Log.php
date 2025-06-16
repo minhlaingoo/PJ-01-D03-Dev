@@ -45,6 +45,6 @@ class Log extends Component
                     ->limit(10)
                     ->get()
             ]
-        );
+        )->layout('components.layouts.device-detail.index');
     }
 }

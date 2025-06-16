@@ -4,20 +4,22 @@
     </mijnui:sidebar.header>
     <!-- --------------------------- Sidebar Content --------------------------- -->
     <mijnui:list class="w-full">
-        <mijnui:list.item href="{{ route('devices.detail', ['id' => request()->route('id')]) }}" active="{{ request()->routeIs('devices.detail') }}"
-            wire:navigate>
+        <mijnui:list.item href="{{ route('devices.detail', ['id' => request()->route('id')]) }}"
+            active="{{ request()->routeIs('devices.detail') }}" wire:navigate>
             Dashboard
         </mijnui:list.item>
 
-        <mijnui:list.item href="{{ route('devices.logs', ['id' => request()->route('id') ]) }}" active="{{ request()->routeIs('devices.logs') }}"
-            wire:navigate>
+        <mijnui:list.item href="{{ route('devices.logs', ['id' => request()->route('id')]) }}"
+            active="{{ request()->routeIs('devices.logs') }}" wire:navigate>
             Logs
         </mijnui:list.item>
 
-        <mijnui:list.item href="{{ route('devices.setting', ['id' => request()->route('id')]) }}" active="{{ request()->routeIs('devices.setting') }}"
-            wire:navigate>
-            Settings
-        </mijnui:list.item>
+        @if (checkPermission('device', 'update'))
+            <mijnui:list.item href="{{ route('devices.setting', ['id' => request()->route('id')]) }}"
+                active="{{ request()->routeIs('devices.setting') }}" wire:navigate>
+                Settings
+            </mijnui:list.item>
+        @endif
 
         <mijnui:list.item href="{{ route('devices.index') }}" class="self-end" wire:navigate>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -35,8 +35,7 @@
                     <mijnui:checkbox wire:model="is_active" label="Is Active" class="mt-4"/>
                 </div>
                 
-                <mijnui:button color="primary" class="mt-3" wire:loading disabled>Loading</mijnui:button>
-                <mijnui:button color="primary" class="mt-3" wire:loading.remove>Create</mijnui:button>
+                <mijnui:button color="primary" class="mt-3" has-loading>Update</mijnui:button>
             </form>
         </mijnui:card.content>
     </mijnui:card>

@@ -46,12 +46,13 @@ class Setting extends Component
         $mqttService->publishMessage($this->device->topic ?? "", $this->publish_message);
     }
 
-
     public function update()
     {
         $data = $this->validate();
         $this->device->fill($data);
         $this->device->save();
+        session()->flash('message', "Setting updated successfully!");
+        return to_route('devices.setting', ['id' => $this->device->id]);
     }
 
     public function render()

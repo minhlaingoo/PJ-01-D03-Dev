@@ -2,10 +2,10 @@
 <section id="table" class="">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold">Sensors List</h2>
-        @if (checkPermission('role', 'create'))
+        {{-- @if (checkPermission('role', 'create'))
             <mijnui:button color="primary" href="{{ route('role-permissions.create') }}" wire:navigate>Create
             </mijnui:button>
-        @endif
+        @endif --}}
     </div>
     <x-alert />
     <div>

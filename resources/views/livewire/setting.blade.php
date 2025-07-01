@@ -2,7 +2,7 @@
     <x-alert />
     <mijnui:card.header class="text-2xl font-semibold">App Setting</mijnui:card.header>
     <mijnui:card.content>
-        <form wire:submit.prevent="updateAppSetting">
+        <form wire:submit.prevent="updateAppSetting" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                 {{-- //* span 2  --}}
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <mijnui:button color="primary" size="sm" class="mt-8">Update</mijnui:button>
+            <mijnui:button color="primary" has-loading>Update</mijnui:button>
         </form>
     </mijnui:card.content>
 

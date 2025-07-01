@@ -5,55 +5,79 @@
                 Reaction Overview
             </mijnui:card.title>
         </mijnui:card.header>
+
         <mijnui:card.content>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <mijnui:input label="Sample ID" wire:model="sample_id" disabled readonly />
-                <mijnui:input label="Comment" wire:model="description" disabled readonly/>
+                <mijnui:input label="Comment" wire:model="description" disabled readonly />
+            </div>
 
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32" >mAb Volume</mijnui:label>
-                    <mijnui:input class="w-20" wire:model="mAb_volume" placeholder="Volume" />
-                    <p>mL</p>
+            <div class="mt-6 space-y-4">
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>mAb Volume</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input wire:model="mAb_volume" placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Payload Volume</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Payload Volume</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Reduction Reservior 1</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Reduction Reservoir 1</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Reduction Reservior 2</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Reduction Reservoir 2</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Reservior</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Reservoir</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Reservior</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Reservoir</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
-                <h3 class="col-span-2 text-lg font-semibold">Desired Final Product</h3>
-                <div class="flex items-center gap-4 col-span-2">
-                    <mijnui:label class="w-32">Desired final Volume</mijnui:label>
-                    <mijnui:input class="w-20" placeholder="Volume" />
-                    <p>mL</p>
+
+                <h3 class="text-lg font-semibold pt-2">Desired Final Product</h3>
+
+                <div class="grid grid-cols-6 gap-4 items-center">
+                    <mijnui:label>Desired Final Volume</mijnui:label>
+                    <div class="col-span-4">
+                        <mijnui:input placeholder="Volume" />
+                    </div>
+                    <mijnui:input value="mL" disabled />
                 </div>
             </div>
 
-            <div class="col-span-2 flex items-center gap-4 my-4">
+            <div class="flex items-center gap-4 my-6">
                 <mijnui:checkbox />
                 <span>Buffer Level Checked?</span>
             </div>
-            
-            <div class="col-span-2 flex items-center gap-4">
+
+            <div class="flex items-center gap-4">
                 <mijnui:button color="primary">Confirm</mijnui:button>
                 <mijnui:button>Back</mijnui:button>
             </div>

@@ -4,12 +4,14 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold">User Table</h2>
         @if (checkPermission('user', 'create'))
-        <a href="{{ route('users.create') }}" wire:navigate>
-            <mijnui:button color="primary">Create</mijnui:button>
-        </a>
+            <a href="{{ route('users.create') }}" wire:navigate>
+                <mijnui:button color="primary">
+                    Create
+                </mijnui:button>
+            </a>
         @endif
     </div>
-   
+
     <div class="w-full overflow-x-auto">
         <mijnui:table class="table-fixed w-full">
             <mijnui:table.columns>
@@ -26,19 +28,19 @@
             <mijnui:table.rows>
                 @foreach ($users as $user)
                     <mijnui:table.row>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>
                             {{ $user->name }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>
                             {{ $user->role->name ?? '' }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>
                             {{ $user->email }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>
                             {{ $user->created_at->format('d M Y H:i') }}
                         </mijnui:table.cell>
-                        <mijnui:table.cell >
+                        <mijnui:table.cell>
                             <mijnui:badge size="sm" color="{{ $user->is_active ? 'success' : 'danger' }}"
                                 rounded="lg" outline>{{ $user->is_active ? 'active' : 'inactive' }}</mijnui:badge>
                         </mijnui:table.cell>

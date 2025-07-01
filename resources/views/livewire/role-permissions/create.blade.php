@@ -55,8 +55,7 @@
 
             </mijnui:card.content>
             <mijnui:card.footer>
-                <mijnui:button wire:loading wire:target="store" disabled>Loading</mijnui:button>
-                <mijnui:button color="primary" wire:loading.remove wire:target="store">Create</mijnui:button>
+                <mijnui:button type="submit" has-loading color="primary">Create</mijnui:button>
             </mijnui:card.footer>
         </form>
     </mijnui:card>

@@ -31,13 +31,13 @@
                     <div class="w-full">
                         <mijnui:label>Authentication Type</mijnui:label>
                         <br />
-                        <select class="border rounded-lg my-1 py-2 px-3 w-full" wire:model.live="broker_auth_type">
+                        <mijnui:select wire:model.live="broker_auth_type">
                             @foreach ($broker_auth_types as $key => $method)
-                                <option value="{{ $key }}">
+                                <mijnui:select.option value="{{ $key }}">
                                     {{ $method }}
-                                </option>
+                                </mijnui:select.option>
                             @endforeach
-                        </select>
+                        </mijnui:select>
                     </div>
                 </div>
 
@@ -119,21 +119,11 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                 <mijnui:input label="Subscribed Topic" type="text" wire:model="subscribe_topic" />
-                <div>
-                    <mijnui:label>QoS Service Level</mijnui:label>
-                    <br />
-                    <select class="border rounded-lg my-1 py-2 px-3 w-full" wire:model="subscribe_qos">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select>
-                </div>
-
-                {{-- <mijnui:select label="QoS Service Level" wire:model="subscribe_qos">
+                <mijnui:select label="QoS Service Level" wire:model="subscribe_qos">
                     <mijnui:select.option value="0">0</mijnui:select.option>
                     <mijnui:select.option value="1">1</mijnui:select.option>
                     <mijnui:select.option value="2">2</mijnui:select.option>
-                </mijnui:select> --}}
+                </mijnui:select>
 
 
             </div>
@@ -143,7 +133,7 @@
                 <mijnui:label>Retained Message</mijnui:label>
             </div>
 
-            <mijnui:button color="primary" size="sm" class="mt-8">Update</mijnui:button>
+            <mijnui:button color="primary" has-loading>Update</mijnui:button>
         </mijnui:card.content>
     </mijnui:card>
 

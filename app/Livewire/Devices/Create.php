@@ -13,7 +13,8 @@ class Create extends Component
     public $port;
     public $topic;
 
-    public function rules(){
+    public function rules()
+    {
         return [
             'name' => 'required',
             'model' => 'required',
@@ -23,9 +24,12 @@ class Create extends Component
         ];
     }
 
-    public function store(){
+    public function store()
+    {
         $data = $this->validate();
         Device::create($data);
+        $this->reset();
+        session()->flash('message', "Device created successfully!");
         return to_route('devices.index');
     }
 

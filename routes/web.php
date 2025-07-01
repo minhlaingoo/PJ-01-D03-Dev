@@ -38,16 +38,19 @@ use App\Livewire\Test;
 require __DIR__ . '/auth.php';
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+    
+    # Default Pages
+    Route::get('/home', \App\Livewire\Dashboard::class)->name('dashboard');
+    Route::get('/profile', \App\Livewire\Profile\Index::class)->name('user-profile');
+    Route::get('/setting', Setting::class)->name('setting');
+    Route::get('/broker-setting', BrokerSetting::class)->name('broker-setting');
+
+    # Phase Routes
     Route::prefix('phase')->name('phase.')->group(function () {
         Route::get('initialization-cycle-setup', InitializationCycleSetup::class)->name('initialization-cycle-setup');
         Route::get('storage-cycle-setup', StorageCycleSetup::class)->name('storage-cycle-setup');
         Route::get('system-cleaning-setup', SystemCleaningCycleSetup::class)->name('system-cleaning-setup');
     });
-    //    Route::get('/home', Dashboard::class)->name('dashboard');
-    Route::get('/home', \App\Livewire\Dashboard::class)->name('dashboard');
-    Route::get('/profile', \App\Livewire\Profile\Index::class)->name('user-profile');
-    Route::get('/setting', Setting::class)->name('setting');
-    Route::get('/broker-setting', BrokerSetting::class)->name('broker-setting');
 
     // Users Routes
     Route::prefix('users')->group(function () {

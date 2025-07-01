@@ -9,7 +9,6 @@
         </div>
     </div>
 
-
     <!-- Buttons Section -->
     <mijnui:card>
         <mijnui:card.content>
@@ -20,7 +19,10 @@
                         label="Your Name" />
                     <mijnui:select wire:model="role_id" label="Role" required>
                         @foreach ($roles as $role)
-                            <mijnui:select.option value="{{ $role->id }}">{{ $role->name }}</mijnui:select.option>
+                            @if ($role->id != 1)
+                                <mijnui:select.option value="{{ $role->id }}">{{ $role->name }}
+                                </mijnui:select.option>
+                            @endif
                         @endforeach
                     </mijnui:select>
                     <div class="md:col-span-2">
@@ -32,10 +34,10 @@
                         placeholder="********" label="Confirm Password" />
                 </div>
                 <div>
-                    <mijnui:checkbox wire:model="is_active" label="Is Active" class="mt-4"/>
+                    <mijnui:checkbox wire:model="is_active" label="Is Active" class="mt-4" />
                 </div>
 
-                <mijnui:button color="primary" class="mt-3">Create</mijnui:button>
+                <mijnui:button type="submit" color="primary" class="mt-3" has-loading>Create</mijnui:button>
             </form>
         </mijnui:card.content>
     </mijnui:card>

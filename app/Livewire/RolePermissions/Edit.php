@@ -18,8 +18,6 @@ class Edit extends Component
     public $role;
     public $selected_permissions = [];
 
-
-
     public function rules()
     {
         return [
@@ -71,7 +69,7 @@ class Edit extends Component
                 ->save();
 
             session()->flash('message', 'Role updated successfully.');
-            return redirect()->route('role-permissions.index');
+            return to_route('role-permissions.index');
         } catch (Exception $e) {
             DB::rollBack();
             activity('role-permission')

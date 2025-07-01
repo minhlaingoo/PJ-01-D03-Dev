@@ -35,7 +35,7 @@ class Edit extends Component
         $this->sensor->fill($data);
         $this->sensor->save();
         session()->flash('message', 'Sensor updated successfully.');
-
+        return to_route('devices.detail', ['id' => $this->sensor->device_id]);
     }
 
     public function render()

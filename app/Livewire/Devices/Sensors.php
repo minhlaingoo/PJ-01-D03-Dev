@@ -32,6 +32,9 @@ class Sensors extends Component
         $data = $this->validate();
         $data['device_id'] = $this->device_id;
         Sensor::create($data);
+        $this->reset();
+        session()->flash('message', "Sensor created successfully!");
+        return to_route('devices.detail', ['id' => $data['device_id']]);
     }
 
     public function render()

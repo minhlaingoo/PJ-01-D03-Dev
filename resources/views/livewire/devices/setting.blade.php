@@ -1,4 +1,5 @@
 <div class="space-y-4">
+    <x-alert />
     <form wire:submit="update">
         <mijnui:card>
             <mijnui:card.header>
@@ -6,12 +7,12 @@
                 </mijnui:card.title>
             </mijnui:card.header>
             <mijnui:card.content>
-                <form>
-                    <div class="flex items-center gap-4 my-2">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
                         <mijnui:label>Device Stauts</mijnui:label>
                         <mijnui:toggle wire:model="is_active" />
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <mijnui:input wire:model="name" label="Device Name" placeholder="e.g. ChemLab" required />
                         <mijnui:input wire:model="model" label="Model Name" placeholder="e.g. IoT3201" required />
                         <mijnui:input wire:model="ip" label="Device Ip/Domain" placeholder="e.g. 163.21.62.133"
@@ -22,55 +23,27 @@
                             placeholder="e.g. test/topic" />
                     </div>
 
-                    <mijnui:button>Update</mijnui:button>
-                </form>
+                    <mijnui:button type="submit" color="primary" wire:target="update" has-loading>Update</mijnui:button>
+                </div>
             </mijnui:card.content>
 
         </mijnui:card>
     </form>
 
-    @if($device->is_active)
-    <mijnui:card>
-        <mijnui:card.header>
-            <mijnui:card.title class="text-2xl font-semibold">{{ $device->name }}'s Publish Message
-                Setting
-            </mijnui:card.title>
-        </mijnui:card.header>
-        <mijnui:card.content>
-            <div>
-
-                {{-- <div class="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6">
-
-            <!-- Tabs -->
-            <div class="flex space-x-4 mb-4">
-                <button id="plainTab" onclick="switchMode('plain')"
-                    class="tab-btn text-white bg-blue-500 px-4 py-2 rounded">Plain Text</button>
-                <button id="jsonTab" onclick="switchMode('json')"
-                    class="tab-btn text-gray-600 bg-gray-200 px-4 py-2 rounded">JSON</button>
-            </div>
-
-            <!-- Input Textarea -->
-            <textarea id="sharedInput" class="w-full p-4 border border-gray-300 rounded-md h-60 font-mono"
-                placeholder="Enter plain text or JSON..." oninput="handleInput()" onkeydown="handleKey(event)"></textarea>
-
-            <!-- Save & Load Buttons -->
-            <div class="flex space-x-2 mt-3">
-                <button onclick="saveData()"
-                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Save</button>
-                <button onclick="loadData()"
-                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Load</button>
-            </div>
-
-            <!-- Error message -->
-            <p id="errorMsg" class="text-red-500 mt-2 hidden"></p>
-        </div> --}}
-
-                <mijnui:input class="max-w-64" label="Message" wire:model="publish_message" />
-            </div>
-
-            <mijnui:button wire:click="publish" class="mt-2">Publish</mijnui:button>
-        </mijnui:card.content>
-    </mijnui:card>
+    @if ($device->is_active)
+        <mijnui:card>
+            <mijnui:card.header>
+                <mijnui:card.title class="text-2xl font-semibold">{{ $device->name }}'s Publish Message
+                    Setting
+                </mijnui:card.title>
+            </mijnui:card.header>
+            <mijnui:card.content>
+                <div class="space-y-4">
+                    <mijnui:input class="max-w-64" label="Message" wire:model="publish_message" />
+                    <mijnui:button wire:click="publish" color="primary" wire:target="publish" has-loading>Publish</mijnui:button>
+                </div>
+            </mijnui:card.content>
+        </mijnui:card>
     @endif
     {{-- <script>
         let mode = 'plain';

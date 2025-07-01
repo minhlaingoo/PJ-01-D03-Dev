@@ -3,7 +3,7 @@
 
         <mijnui:card>
             <mijnui:card.header>
-                <mijnui:card.title class="text-2xl font-bold text-gray-800">Sensor Create</mijnui:card.title>
+                <mijnui:card.title class="text-2xl font-bold text-gray-800">Sensor Update</mijnui:card.title>
             </mijnui:card.header>
 
             <mijnui:card.content class="grid grid-cols-2 gap-4">
@@ -15,11 +15,11 @@
             </mijnui:card.content>
 
             <mijnui:card.footer>
-                
-                <mijnui:button type="submit" color="primary" size="sm" class="mt-8">Update</mijnui:button>
+
+                <mijnui:button type="submit" color="primary" has-loading>Update</mijnui:button>
 
             </mijnui:card.footer>
-            
+
         </mijnui:card>
 
     </form>

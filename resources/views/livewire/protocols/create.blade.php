@@ -1,4 +1,4 @@
-<div class="space-y-2">
+<form wire:submit="finalizeProtocol" class="space-y-2">
     <x-alert />
     <mijnui:card>
         <mijnui:card.header>
@@ -8,13 +8,12 @@
         </mijnui:card.header>
         <mijnui:card.content>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <mijnui:input label="Sample ID" wire:model="sample_id" />
+                <mijnui:input label="Sample ID" wire:model="sample_id" placeholder="e.g. 123" />
                 <div class="w-full space-y-1">
                     <p class="text-sm">Description</p>
-
-                    <textarea
+                    <mijnui:textarea
                         class="border-input disabled:opacity-disabled flex min-h-[80px] w-full rounded-md border bg-transparent px-3 py-2 text-sm placeholder:text-muted-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed"
-                        placeholder="Description about protocol" wire:model="description"></textarea>
+                        placeholder="Description about protocol" wire:model="description"></mijnui:textarea>
                 </div>
             </div>
         </mijnui:card.content>
@@ -32,10 +31,11 @@
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.mAb.volume" />
                     </div>
-                    <select wire:model="formData.mAb.volume_unit" class="border rounded px-2 py-1">
-                        <option value="µL">µL</option>
-                        <option value="mL">mL</option>
-                    </select>
+                    <mijnui:select wire:model="formData.mAb.volume_unit">
+                        <mijnui:select.option value="µL">µL</mijnui:select.option>
+                        <mijnui:select.option value="mL">mL</mijnui:select.option>
+                    </mijnui:select>
+
                 </div>
             </div>
 
@@ -45,11 +45,12 @@
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.mAb.concentration" />
                     </div>
-                    <select wire:model="formData.mAb.concentration_unit" class="border rounded px-2 py-1">
-                        <option value="mg/mL">mg/mL</option>
-                        <option value="µg/mL">µg/mL</option>
-                        <option value="nM">nM</option>
-                    </select>
+                    <mijnui:select wire:model="formData.mAb.concentration_unit">
+                        <mijnui:select.option value="mg/mL">mg/mL</mijnui:select.option>
+                        <mijnui:select.option value="µg/mL">µg/mL</mijnui:select.option>
+                        <mijnui:select.option value="nM">nM</mijnui:select.option>
+                    </mijnui:select>
+
                 </div>
             </div>
 
@@ -62,10 +63,10 @@
                     <div class="flex-1">
                         <mijnui:input type="number" wire:model="formData.mAb.volume_to_add" />
                     </div>
-                    <select wire:model="formData.mAb.volume_to_add_unit" class="border rounded px-2 py-1">
-                        <option value="µL">µL</option>
-                        <option value="mL">mL</option>
-                    </select>
+                    <mijnui:select wire:model="formData.mAb.volume_to_add_unit">
+                        <mijnui:select.option value="µL">µL</mijnui:select.option>
+                        <mijnui:select.option value="mL">mL</mijnui:select.option>
+                    </mijnui:select>
                 </div>
             </div>
         </mijnui:card.content>
@@ -83,10 +84,10 @@
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.payload.volume_available" />
                     </div>
-                    <select wire:model="formData.payload.volume_available_unit" class="border rounded px-2 py-1">
-                        <option value="µL">µL</option>
-                        <option value="mL">mL</option>
-                    </select>
+                    <mijnui:select wire:model="formData.payload.volume_available_unit">
+                        <mijnui:select.option value="µL">µL</mijnui:select.option>
+                        <mijnui:select.option value="mL">mL</mijnui:select.option>
+                    </mijnui:select>
                 </div>
             </div>
 
@@ -96,11 +97,11 @@
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.payload.concentration" />
                     </div>
-                    <select wire:model="formData.payload.concentration_unit" class="border rounded px-2 py-1">
-                        <option value="mg/mL">mg/mL</option>
-                        <option value="µg/mL">µg/mL</option>
-                        <option value="nM">nM</option>
-                    </select>
+                    <mijnui:select wire:model="formData.payload.concentration_unit">
+                        <mijnui:select.option value="mg/mL">mg/mL</mijnui:select.option>
+                        <mijnui:select.option value="µg/mL">µg/mL</mijnui:select.option>
+                        <mijnui:select.option value="nM">nM</mijnui:select.option>
+                    </mijnui:select>
                 </div>
             </div>
 
@@ -113,10 +114,10 @@
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.payload.volume_to_add" />
                     </div>
-                    <select wire:model="formData.payload.volume_to_add_unit" class="border rounded px-2 py-1">
-                        <option value="µL">µL</option>
-                        <option value="mL">mL</option>
-                    </select>
+                    <mijnui:select wire:model="formData.payload.volume_to_add_unit">
+                        <mijnui:select.option value="µL">µL</mijnui:select.option>
+                        <mijnui:select.option value="mL">mL</mijnui:select.option>
+                    </mijnui:select>
                 </div>
             </div>
 
@@ -146,11 +147,10 @@
                                 <div class="flex-1">
                                     <mijnui:input type="number" wire:model="formData.misc.{{ $res }}" />
                                 </div>
-                                <select wire:model="formData.misc.{{ $res . '_unit' }}"
-                                    class="border rounded px-2 py-1">
-                                    <option value="µL">µL</option>
-                                    <option value="mL">mL</option>
-                                </select>
+                                <mijnui:select wire:model="formData.misc.{{ $res . '_unit' }}">
+                                    <mijnui:select.option value="µL">µL</mijnui:select.option>
+                                    <mijnui:select.option value="mL">mL</mijnui:select.option>
+                                </mijnui:select>
                             </div>
                         </div>
                     @endforeach
@@ -168,10 +168,10 @@
 
 
         <mijnui:card.footer>
-            <mijnui:button wire:click="finalizeProtocol" color="primary">Next</mijnui:button>
+            <mijnui:button type="submit" color="primary" has-loading>Next</mijnui:button>
         </mijnui:card.footer>
 
     </mijnui:card>
 
 
-</div>
+</form>

@@ -1,4 +1,5 @@
 <div class="space-y-2">
+    <x-alert />
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         <mijnui:card class="col-span-1 md:col-span-2 lg:col-span-1">
             <mijnui:card.header class="text-lg font-medium">Device Detail</mijnui:card.header>
@@ -92,11 +93,18 @@
                         <mijnui:table.cell>{{ $sensor->unit }}</mijnui:table.cell>
                         @if (checkPermission('device', 'update'))
                             <mijnui:table.cell>
-                                <a
-                                    href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
-                                    <mijnui:button color="primary">Edit</mijnui:button>
-                                </a>
-                                <mijnui:button color="danger">Delete</mijnui:button>
+                                <div class="flex gap-1 items-center">
+                                    <a
+                                        href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
+                                        <mijnui:button color="primary">Edit</mijnui:button>
+                                    </a>
+                                    {{-- <mijnui:modal>
+                                        <mijnui:modal.content>Hello</mijnui:modal.content>
+                                        <mijnui:modal.trigger> --}}
+                                    <mijnui:button color="danger" has-loading>Delete</mijnui:button>
+                                    {{-- </mijnui:modal.trigger>
+                                    </mijnui:modal> --}}
+                                </div>
                             </mijnui:table.cell>
                         @endif
                     </mijnui:table.row>

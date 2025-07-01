@@ -166,6 +166,7 @@ class BrokerSetting extends Component
             $this->verifyStoredCertificates();
 
             session()->flash('message', 'Settings and certificates updated successfully');
+            return to_route('broker-setting');
         } catch (\Exception $e) {
             Log::error('Failed to save broker settings', [
                 'error' => $e->getMessage(),

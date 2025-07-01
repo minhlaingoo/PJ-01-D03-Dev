@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="store">
+    <form wire:submit.prevent="store">
 
         <mijnui:card>
             <mijnui:card.header>
@@ -15,7 +15,7 @@
             </mijnui:card.content>
 
             <mijnui:card.footer>
-                <mijnui:button type="submit" color="primary" size="sm" class="mt-8">Create</mijnui:button>
+                <mijnui:button type="submit" color="primary" has-loading>Create</mijnui:button>
             </mijnui:card.footer>
         </mijnui:card>
 

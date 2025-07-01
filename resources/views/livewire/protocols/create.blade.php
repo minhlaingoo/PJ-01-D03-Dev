@@ -3,7 +3,7 @@
     <mijnui:card>
         <mijnui:card.header>
             <mijnui:card.title class="text-lg font-semibold">
-                Creating Protocol
+                Thiol-Maleimide Conjugation Protocol
             </mijnui:card.title>
         </mijnui:card.header>
         <mijnui:card.content>
@@ -26,7 +26,7 @@
         </mijnui:card.header>
         <mijnui:card.content class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="w-full">
-                <mijnui:label>Volume</mijnui:label>
+                <mijnui:label>Mass</mijnui:label>
                 <div class="flex items-center gap-4">
                     <div class="flex-1">
                         <mijnui:input wire:model="formData.mAb.volume" />
@@ -57,7 +57,7 @@
             <mijnui:input label="Molecular Weight" wire:model="formData.mAb.molecular_weight" />
             <mijnui:input label="Molar Absorbing Coefficient" wire:model="formData.mAb.molar_absorbing_coefficient" />
 
-            <div class="w-full">
+            <!-- <div class="w-full">
                 <mijnui:label>Volume to Add</mijnui:label>
                 <div class="flex items-center gap-4">
                     <div class="flex-1">
@@ -68,7 +68,7 @@
                         <mijnui:select.option value="mL">mL</mijnui:select.option>
                     </mijnui:select>
                 </div>
-            </div>
+            </div> -->
         </mijnui:card.content>
     </mijnui:card>
 
@@ -108,7 +108,7 @@
             <mijnui:input label="Molecular Weight" wire:model="formData.payload.molecular_weight" />
             <mijnui:input label="Molar Equivalence" wire:model="formData.payload.molar_equivalence" />
 
-            <div class="w-full">
+            <!-- <div class="w-full">
                 <mijnui:label>Volume to Add</mijnui:label>
                 <div class="flex items-center gap-4">
                     <div class="flex-1">
@@ -119,7 +119,7 @@
                         <mijnui:select.option value="mL">mL</mijnui:select.option>
                     </mijnui:select>
                 </div>
-            </div>
+            </div> -->
 
             <mijnui:input label="Molar Absorbing Coefficient"
                 wire:model="formData.payload.molar_absorbing_coefficient" />
@@ -127,7 +127,7 @@
     </mijnui:card>
 
     <!-- Miscellaneous Card -->
-    <mijnui:card x-data="{ open: true }">
+    <!-- <mijnui:card x-data="{ open: true }">
         <mijnui:card.header>
             <mijnui:card.title class="text-lg font-semibold">Miscellaneous</mijnui:card.title>
         </mijnui:card.header>
@@ -157,7 +157,7 @@
                 </div>
             </template>
         </mijnui:card.content>
-    </mijnui:card>
+    </mijnui:card> -->
 
 
     <mijnui:card>

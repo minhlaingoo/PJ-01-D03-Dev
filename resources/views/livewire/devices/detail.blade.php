@@ -62,7 +62,7 @@
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-xl font-semibold">Sensor List</h3>
         @if (checkPermission('device', 'create'))
-            <a href="{{ route('devices.sensors', ['id' => request()->route('id')]) }}">
+            <a href="{{ route('devices.sensors', ['id' => $device->id]) }}">
                 <mijnui:button color="primary">
                     + Add Sensor
                 </mijnui:button>
@@ -95,15 +95,40 @@
                             <mijnui:table.cell>
                                 <div class="flex gap-1 items-center">
                                     <a
-                                        href="{{ route('sensors.edit', ['id' => request()->route('id'), 'sensor' => $sensor->id]) }}">
+                                        href="{{ route('sensors.edit', ['id' => $device->id, 'sensor' => $sensor->id]) }}">
                                         <mijnui:button color="primary">Edit</mijnui:button>
                                     </a>
-                                    {{-- <mijnui:modal>
-                                        <mijnui:modal.content>Hello</mijnui:modal.content>
-                                        <mijnui:modal.trigger> --}}
-                                    <mijnui:button color="danger" has-loading>Delete</mijnui:button>
-                                    {{-- </mijnui:modal.trigger>
-                                    </mijnui:modal> --}}
+                                    <div x-cloak x-data="{ open: false, sensor_id: null }">
+                                        <!-- Sensor Delete Modal -->
+                                        <div x-show="open" x-transition
+                                            class="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+                                            @click.self="open = false">
+                                            <div class="bg-white dark:bg-zinc-800 rounded shadow-lg p-6 w-full max-w-md">
+                                                <h2 class="text-lg font-semibold mb-4">Delete Sensor</h2>
+                                                <p class="mb-6">Are you sure you want to delete this sensor?</p>
+                                                <div class="flex justify-end gap-2">
+                                                    <mijnui:button type="button" outline
+                                                        @click="open = false">
+                                                        Cancel
+                                                    </mijnui:button>
+
+                                                    <mijnui:button type="button" color="danger" has-loading
+                                                        wire:click="deleteSensor(sensor_id)"
+                                                        wire:loading.attr="disabled" wire:target="deleteSensor"
+                                                        x-on:sensor-delete="open=false">
+                                                        Delete
+                                                    </mijnui:button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Trigger Button -->
+                                        <mijnui:button color="danger" 
+                                            @click="open = true; sensor_id = {{ $sensor->id }}">
+                                            Delete
+                                        </mijnui:button>
+                                    </div>
+
                                 </div>
                             </mijnui:table.cell>
                         @endif
@@ -118,4 +143,6 @@
     {{-- <div class="col-span-3">
         <livewire:devices.log id="{{ $device->id }}" />
     </div> --}}
+
+
 </div>
